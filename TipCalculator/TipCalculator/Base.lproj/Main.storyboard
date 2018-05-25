@@ -37,7 +37,7 @@
                                         <rect key="frame" x="124.5" y="0.0" width="210.5" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                     </textField>
                                 </subviews>
                             </stackView>
@@ -76,16 +76,26 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jNs-UJ-Flm" userLabel="Submit">
+                                <rect key="frame" x="20" y="230" width="335" height="30"/>
+                                <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="calculateTip:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xiY-4T-8TX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GN4-on-Ad5" secondAttribute="trailing" constant="20" id="1kE-iK-eOc"/>
+                            <constraint firstItem="jNs-UJ-Flm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="2Qc-eC-keH"/>
+                            <constraint firstItem="jNs-UJ-Flm" firstAttribute="top" secondItem="ZBB-aq-JBK" secondAttribute="bottom" constant="30" id="7Ej-6Y-8OC"/>
                             <constraint firstItem="GN4-on-Ad5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="JGe-Cv-Y0R"/>
                             <constraint firstItem="eRK-am-cdZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="312" id="KHH-ac-sFu"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cYo-fB-rPL" secondAttribute="trailing" constant="20" id="KQz-XJ-KkR"/>
                             <constraint firstItem="eRK-am-cdZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="PKx-Nz-uRy"/>
                             <constraint firstItem="GN4-on-Ad5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="QRU-nR-dHn"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZBB-aq-JBK" secondAttribute="trailing" constant="20" id="V6e-Lp-IMK"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jNs-UJ-Flm" secondAttribute="trailing" constant="20" id="amF-b0-d0r"/>
                             <constraint firstItem="cYo-fB-rPL" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="dxH-Ji-KPu"/>
                             <constraint firstItem="cYo-fB-rPL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="nNE-He-ca6"/>
                             <constraint firstItem="ZBB-aq-JBK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="150" id="vhO-EE-pCn"/>
@@ -94,6 +104,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="priceField" destination="JJO-oS-o5y" id="9th-YD-UsT"/>
+                        <outlet property="resultLabel" destination="q7R-Ya-997" id="29d-ks-bb5"/>
+                        <outlet property="submitButton" destination="jNs-UJ-Flm" id="wgJ-zf-Hg7"/>
+                        <outlet property="tipField" destination="deR-MP-ThX" id="Wjh-kN-cFd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
