@@ -17,7 +17,6 @@ class ViewController: UIViewController {
     var count = 0.0
     var timer = Timer()
     var minutes = 0
-    //var running = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +26,6 @@ class ViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     @IBAction func startAction(_ sender: Any) {
@@ -63,7 +61,6 @@ class ViewController: UIViewController {
         }
         let seconds = Int(floor(count))
         let dec = count.truncatingRemainder(dividingBy: 1.0)
-        //print("\(count) / 60 = \(count / 60)"
         counter.text = String(format: "\(minutes):%02d:%02.0f", seconds, dec * 100)
     }
 }
