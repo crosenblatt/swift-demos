@@ -9,10 +9,19 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    @IBOutlet weak var counter: UILabel!
+    @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var stopButton: UIButton!
+    @IBOutlet weak var resetButton: UIButton!
+    
+    var count = 0.0
+    var timer = Timer()
+    //var running = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        counter.text = String(count)
+        stopButton.isEnabled = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -20,6 +29,33 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    @IBAction func startAction(_ sender: Any) {
+        stopButton.isEnabled = true
+        startButton.isEnabled = false
+        
+        timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(update), userInfo: nil, repeats: true)
+        
+    }
+    
+    @IBAction func stopAction(_ sender: Any) {
+        startButton.isEnabled = true
+        stopButton.isEnabled = false
+        
+        timer.invalidate()
+    }
+    
+    @IBAction func resetAction(_ sender: Any) {
+        startButton.isEnabled = true
+        stopButton.isEnabled = false
+        
+        timer.invalidate()
+        count = 0.0
+        counter.text = String(count)
+    }
+    
+    @objc func update() {
+        count = count + 0.01
+        counter.text = String(format: "%.2f", count)
+    }
 }
 
