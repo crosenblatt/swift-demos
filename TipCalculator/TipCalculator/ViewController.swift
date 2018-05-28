@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var tipField: UITextField!
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var finalTotal: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +34,8 @@ class ViewController: UIViewController {
         if price != nil && tipPercentage != nil {
             let tipDecimal:Double = Double(tipPercentage!) / 100.0
             let calculatedTip:Double = Double(price!) * tipDecimal
-            resultLabel.text = "$\(calculatedTip)"
+            resultLabel.text = String(format: "$%.2f", calculatedTip)
+            finalTotal.text = String(format: "$%.2f", price! + calculatedTip)
         }
     }
 }
