@@ -51,6 +51,15 @@ class TodoTableViewController: UITableViewController {
         return cell
     }
  
+    @IBAction func unwindToList(sender: UIStoryboardSegue) {
+        if let source = sender.source as? ViewController, let todoItem = source.todoItem {
+            let newIndexPath = IndexPath(row: items.count, section: 0)
+            items.append(todoItem)
+            tableView.insertRows(at: [newIndexPath], with: .automatic)
+        }
+        
+        
+    }
 
     /*
     // Override to support conditional editing of the table view.
