@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3Yd-9z-ymu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9hM-uP-Kl0">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Todo Table View Controller-->
+        <!--To Do-->
         <scene sceneID="0ij-Kb-PwK">
             <objects>
                 <tableViewController id="3Yd-9z-ymu" customClass="TodoTableViewController" customModule="ToDoApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -45,10 +45,17 @@
                             <outlet property="delegate" destination="3Yd-9z-ymu" id="tSx-YR-0Yp"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="To Do" id="eFK-r5-OYf">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="FfP-hp-hzS">
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="show" id="Lks-Wa-rJz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mcj-GA-KIN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-839.20000000000005" y="121.88905547226388"/>
+            <point key="canvasLocation" x="100" y="121.88905547226388"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -57,12 +64,64 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add New Item" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Tp-T4-EFr">
+                                <rect key="frame" x="20" y="84" width="335" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fpF-3R-Bwm">
+                                <rect key="frame" x="20" y="144" width="335" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cTI-Bz-RtP">
+                                <rect key="frame" x="100" y="194" width="175" height="30"/>
+                                <state key="normal" title="Submit"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fpF-3R-Bwm" secondAttribute="trailing" constant="20" id="012-vK-jmp"/>
+                            <constraint firstItem="cTI-Bz-RtP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="HS2-P7-NAx"/>
+                            <constraint firstItem="5Tp-T4-EFr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="RoF-KB-Pe9"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cTI-Bz-RtP" secondAttribute="trailing" constant="100" id="S8G-pp-3tW"/>
+                            <constraint firstItem="5Tp-T4-EFr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="TYi-lE-OFr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5Tp-T4-EFr" secondAttribute="trailing" constant="20" id="gSn-qd-wlx"/>
+                            <constraint firstItem="cTI-Bz-RtP" firstAttribute="top" secondItem="fpF-3R-Bwm" secondAttribute="bottom" constant="20" id="nXf-Y6-XQ3"/>
+                            <constraint firstItem="fpF-3R-Bwm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="uH9-sk-jVF"/>
+                            <constraint firstItem="fpF-3R-Bwm" firstAttribute="top" secondItem="5Tp-T4-EFr" secondAttribute="bottom" constant="30" id="wOd-LT-93E"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem title="Item" id="Itc-ZC-ZT0"/>
+                    </toolbarItems>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="958" y="122"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="oeK-yd-BDI">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9hM-uP-Kl0" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KfY-fx-anT">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="3Yd-9z-ymu" kind="relationship" relationship="rootViewController" id="7Ke-DZ-AoT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K3K-S5-HdM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-839.20000000000005" y="121.88905547226388"/>
         </scene>
     </scenes>
 </document>
