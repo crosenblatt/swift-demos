@@ -19,6 +19,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        if let todoItem = todoItem {
+            navigationItem.title = todoItem
+            todoField.text = todoItem
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,7 +45,14 @@ class ViewController: UIViewController {
     }
     
     @IBAction func cancel(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        let isInAddMode = presentingViewController is UINavigationController
+        if isInAddMode {
+            dismiss(animated: true, completion: nil)
+        } else if let owningNavigationalController = navigationController {
+            owningNavigationalController.popViewController(animated: true)
+        } else {
+            fatalError("broke")
+        }
     }
 }
 
