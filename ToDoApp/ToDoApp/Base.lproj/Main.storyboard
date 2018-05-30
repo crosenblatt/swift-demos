@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Todo Table View Controller-->
         <scene sceneID="0ij-Kb-PwK">
             <objects>
-                <tableViewController id="3Yd-9z-ymu" sceneMemberID="viewController">
+                <tableViewController id="3Yd-9z-ymu" customClass="TodoTableViewController" customModule="ToDoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="7PA-ih-sqS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -35,6 +35,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="todoLabel" destination="7HY-Jc-fb4" id="Cx3-ey-0p0"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

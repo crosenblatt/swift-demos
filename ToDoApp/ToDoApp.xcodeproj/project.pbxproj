@@ -13,6 +13,7 @@
 		7D71F05520BEEC2C0077D07D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D71F05420BEEC2C0077D07D /* Assets.xcassets */; };
 		7D71F05820BEEC2C0077D07D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D71F05620BEEC2C0077D07D /* LaunchScreen.storyboard */; };
 		7D71F06020BEEF9F0077D07D /* TodoItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D71F05F20BEEF9F0077D07D /* TodoItemTableViewCell.swift */; };
+		7D71F06220BEF4060077D07D /* TodoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D71F06120BEF4060077D07D /* TodoTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		7D71F05720BEEC2C0077D07D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7D71F05920BEEC2C0077D07D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7D71F05F20BEEF9F0077D07D /* TodoItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemTableViewCell.swift; sourceTree = "<group>"; };
+		7D71F06120BEF4060077D07D /* TodoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +42,7 @@
 		7D71F04120BEEC2A0077D07D = {
 			isa = PBXGroup;
 			children = (
+				7D71F06120BEF4060077D07D /* TodoTableViewController.swift */,
 				7D71F04C20BEEC2A0077D07D /* ToDoApp */,
 				7D71F04B20BEEC2A0077D07D /* Products */,
 			);
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D71F05020BEEC2A0077D07D /* ViewController.swift in Sources */,
+				7D71F06220BEF4060077D07D /* TodoTableViewController.swift in Sources */,
 				7D71F04E20BEEC2A0077D07D /* AppDelegate.swift in Sources */,
 				7D71F06020BEEF9F0077D07D /* TodoItemTableViewCell.swift in Sources */,
 			);
