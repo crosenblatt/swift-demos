@@ -7,13 +7,19 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class ComposeViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     
+    var ref:DatabaseReference?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        ref = Database.database().reference()
+        
         // Do any additional setup after loading the view.
     }
 
@@ -24,6 +30,7 @@ class ComposeViewController: UIViewController {
     
     @IBAction func addPost(_ sender: Any) {
         //Add Post to Firebase
+        ref?.child("Posts").childByAutoId().setValue(textView.text)
         
         //Dismiss Popover
         presentingViewController?.dismiss(animated: true, completion: nil)
