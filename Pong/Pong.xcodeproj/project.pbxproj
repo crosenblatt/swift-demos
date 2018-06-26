@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D3627A420E2880D000FA2B2 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3627A320E2880D000FA2B2 /* SplashViewController.swift */; };
 		7D86B61A20DD77280032A3BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D86B61920DD77280032A3BD /* AppDelegate.swift */; };
 		7D86B61C20DD77280032A3BD /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7D86B61B20DD77280032A3BD /* GameScene.sks */; };
 		7D86B61E20DD77280032A3BD /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7D86B61D20DD77280032A3BD /* Actions.sks */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7D3627A320E2880D000FA2B2 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		7D86B61620DD77280032A3BD /* Pong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pong.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D86B61920DD77280032A3BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7D86B61B20DD77280032A3BD /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 				7D86B61B20DD77280032A3BD /* GameScene.sks */,
 				7D86B61D20DD77280032A3BD /* Actions.sks */,
 				7D86B61F20DD77280032A3BD /* GameScene.swift */,
+				7D3627A320E2880D000FA2B2 /* SplashViewController.swift */,
 				7D86B62120DD77280032A3BD /* GameViewController.swift */,
 				7D86B62320DD77280032A3BD /* Main.storyboard */,
 				7D86B62620DD77290032A3BD /* Assets.xcassets */,
@@ -149,6 +152,7 @@
 				7D86B62020DD77280032A3BD /* GameScene.swift in Sources */,
 				7D86B62220DD77280032A3BD /* GameViewController.swift in Sources */,
 				7D86B61A20DD77280032A3BD /* AppDelegate.swift in Sources */,
+				7D3627A420E2880D000FA2B2 /* SplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
