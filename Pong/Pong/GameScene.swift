@@ -45,14 +45,16 @@ class GameScene: SKScene {
     func addScore(player: SKSpriteNode) {
         ball.position = CGPoint(x: 0, y: 0)
         ball.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+        let xv = Int(arc4random_uniform(20)) + 1
+        let yv = Int(ceil(sqrt(Double(800 - (xv * xv)))))
         if player == main {
             score[0] += 1
             bottomLabel.text = "\(score[0])"
-            ball.physicsBody?.applyImpulse(CGVector(dx: 20, dy: 20))
+            ball.physicsBody?.applyImpulse(CGVector(dx: xv, dy: yv))
         } else {
             score[1] += 1
             topLabel.text = "\(score[1])"
-            ball.physicsBody?.applyImpulse(CGVector(dx: -20, dy: -20))
+            ball.physicsBody?.applyImpulse(CGVector(dx: -1 * xv, dy: -1 * yv))
         }
     }
     
