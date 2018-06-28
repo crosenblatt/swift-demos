@@ -15,6 +15,7 @@
 		7D56239B20E2A17A00D080B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D56239920E2A17A00D080B3 /* Main.storyboard */; };
 		7D56239D20E2A17A00D080B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D56239C20E2A17A00D080B3 /* Assets.xcassets */; };
 		7D5623A020E2A17A00D080B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D56239E20E2A17A00D080B3 /* LaunchScreen.storyboard */; };
+		7DA9AEB320E555A800376AF2 /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA9AEB220E555A800376AF2 /* GameOverViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		7D56239C20E2A17A00D080B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7D56239F20E2A17A00D080B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7D5623A120E2A17A00D080B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7DA9AEB220E555A800376AF2 /* GameOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				7D56239320E2A17A00D080B3 /* Actions.sks */,
 				7D56239520E2A17A00D080B3 /* GameScene.swift */,
 				7D56239720E2A17A00D080B3 /* GameViewController.swift */,
+				7DA9AEB220E555A800376AF2 /* GameOverViewController.swift */,
 				7D56239920E2A17A00D080B3 /* Main.storyboard */,
 				7D56239C20E2A17A00D080B3 /* Assets.xcassets */,
 				7D56239E20E2A17A00D080B3 /* LaunchScreen.storyboard */,
@@ -146,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DA9AEB320E555A800376AF2 /* GameOverViewController.swift in Sources */,
 				7D56239620E2A17A00D080B3 /* GameScene.swift in Sources */,
 				7D56239820E2A17A00D080B3 /* GameViewController.swift in Sources */,
 				7D56239020E2A17A00D080B3 /* AppDelegate.swift in Sources */,

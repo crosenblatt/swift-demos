@@ -29,6 +29,8 @@ class GameViewController: UIViewController {
             
             view.showsFPS = true
             view.showsNodeCount = true
+            
+            NotificationCenter.default.addObserver(self, selector: #selector(goToLoseView), name: NSNotification.Name(rawValue: "loseSegue"), object: nil)
         }
     }
 
@@ -51,5 +53,9 @@ class GameViewController: UIViewController {
 
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    @objc func goToLoseView() {
+        self.performSegue(withIdentifier: "LoseSegue", sender: self)
     }
 }

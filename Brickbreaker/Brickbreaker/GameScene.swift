@@ -72,6 +72,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if let vc = self.scene?.view?.window?.rootViewController {
                 vc.present(alert, animated: true, completion: nil)
             }
+            
+            NotificationCenter.default.post(NSNotification(name: NSNotification.Name(rawValue: "loseSegue"), object: nil, userInfo: nil) as Notification)
         }
     }
     
