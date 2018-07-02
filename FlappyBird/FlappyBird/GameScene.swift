@@ -12,10 +12,13 @@ import GameplayKit
 class GameScene: SKScene {
     var started:Bool!
     var bird:SKSpriteNode!
+    var height:CGFloat!
     
     override func didMove(to view: SKView) {
         bird = self.childNode(withName: "bird") as! SKSpriteNode
         started = false
+        height = UIScreen.main.bounds.height
+        print(height)
         
         let border = SKPhysicsBody(edgeLoopFrom: (view.scene?.frame)!)
         border.friction = 0
@@ -34,6 +37,10 @@ class GameScene: SKScene {
     }
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
+        if bird.position.y <= -640 {
+            endGame()
+            return
+        }
     }
     
     
@@ -46,5 +53,8 @@ class GameScene: SKScene {
     func endGame() {
         started = false
         bird.physicsBody?.affectedByGravity = false
+        
+        let gameOverLabel = SKLabelNode(text: "Game Over!")
+        gameOverLabel.position = CGPoint(x: 0, y: 0)
     }
 }
