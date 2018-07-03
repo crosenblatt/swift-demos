@@ -45,17 +45,19 @@ class GameScene: SKScene {
     @objc func spawnObstacle() {
         print("spawn")
         let bottom = SKSpriteNode()
-        bottom.position = CGPoint(x: 320, y: -480)
-        bottom.color = UIColor.white
+        bottom.position = CGPoint(x: 100, y: -540)
+        bottom.size = CGSize(width: 50, height: 500)
+        bottom.texture = SKTexture(imageNamed: "Pillar")
         
         let pb = createPB()
         bottom.physicsBody = pb
         
         self.addChild(bottom)
+        
     }
     
     func createPB() -> SKPhysicsBody {
-        let pb = SKPhysicsBody(rectangleOf: CGSize(width: 10, height: 100))
+        let pb = SKPhysicsBody(rectangleOf: CGSize(width: 50, height: 500))
         pb.friction = 0
         pb.collisionBitMask = 1
         pb.categoryBitMask = 2
@@ -67,7 +69,7 @@ class GameScene: SKScene {
         pb.restitution = 0
         pb.linearDamping = 0
         pb.angularDamping = 0
-        pb.velocity = CGVector(dx: 0, dy: 0)
+        pb.velocity = CGVector(dx: -75, dy: 0)
         
         return pb
     }
