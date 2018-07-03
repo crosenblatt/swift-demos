@@ -13,12 +13,11 @@ class GameScene: SKScene {
     var started:Bool!
     var bird:SKSpriteNode!
     var height:CGFloat!
+    var obsTimer = Timer()
     
     override func didMove(to view: SKView) {
         bird = self.childNode(withName: "bird") as! SKSpriteNode
         started = false
-        height = UIScreen.main.bounds.height
-        print(height)
         
         let border = SKPhysicsBody(edgeLoopFrom: (view.scene?.frame)!)
         border.friction = 0
@@ -37,10 +36,40 @@ class GameScene: SKScene {
     }
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
-        if bird.position.y <= -640 {
+        if bird.position.y <= -640 + bird.size.height {
             endGame()
             return
         }
+    }
+    
+    @objc func spawnObstacle() {
+        print("spawn")
+        let bottom = SKSpriteNode()
+        bottom.position = CGPoint(x: 320, y: -480)
+        bottom.color = UIColor.white
+        
+        let pb = createPB()
+        bottom.physicsBody = pb
+        
+        self.addChild(bottom)
+    }
+    
+    func createPB() -> SKPhysicsBody {
+        let pb = SKPhysicsBody(rectangleOf: CGSize(width: 10, height: 100))
+        pb.friction = 0
+        pb.collisionBitMask = 1
+        pb.categoryBitMask = 2
+        pb.isDynamic = true
+        pb.allowsRotation = false
+        pb.pinned = false
+        pb.affectedByGravity = false
+        pb.friction = 0
+        pb.restitution = 0
+        pb.linearDamping = 0
+        pb.angularDamping = 0
+        pb.velocity = CGVector(dx: 0, dy: 0)
+        
+        return pb
     }
     
     
@@ -48,13 +77,19 @@ class GameScene: SKScene {
     func startGame() {
         started = true
         bird.physicsBody?.affectedByGravity = true
+        obsTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(spawnObstacle), userInfo: nil, repeats: true)
     }
     
     func endGame() {
         started = false
+        obsTimer.invalidate()
         bird.physicsBody?.affectedByGravity = false
+        bird.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+        bird.position = CGPoint(x: 0, y: 70)
         
         let gameOverLabel = SKLabelNode(text: "Game Over!")
         gameOverLabel.position = CGPoint(x: 0, y: 0)
+        
+        self.addChild(gameOverLabel)
     }
 }
