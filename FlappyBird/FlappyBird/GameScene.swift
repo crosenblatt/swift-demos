@@ -12,12 +12,18 @@ import GameplayKit
 class GameScene: SKScene {
     var started:Bool!
     var bird:SKSpriteNode!
+    var scoreLabel:SKLabelNode!
     var height:CGFloat!
+    var score:Int!
     var obsTimer = Timer()
+    var scoreTimer = Timer()
     
     override func didMove(to view: SKView) {
         bird = self.childNode(withName: "bird") as! SKSpriteNode
+        scoreLabel = self.childNode(withName: "score") as! SKLabelNode
+        
         started = false
+        score = 0
         
         let border = SKPhysicsBody(edgeLoopFrom: (view.scene?.frame)!)
         border.friction = 0
@@ -45,19 +51,24 @@ class GameScene: SKScene {
     @objc func spawnObstacle() {
         print("spawn")
         let bottom = SKSpriteNode()
-        bottom.position = CGPoint(x: 100, y: -540)
-        bottom.size = CGSize(width: 50, height: 500)
+        bottom.position = CGPoint(x: 350, y: -540)
+        let height = arc4random_uniform(250) + 251
+        bottom.size = CGSize(width: 50, height: Int(height))
         bottom.texture = SKTexture(imageNamed: "Pillar")
         
-        let pb = createPB()
+        let pb = createPB(h: Int(height))
         bottom.physicsBody = pb
         
         self.addChild(bottom)
-        
     }
     
-    func createPB() -> SKPhysicsBody {
-        let pb = SKPhysicsBody(rectangleOf: CGSize(width: 50, height: 500))
+    @objc func updateScore() {
+        score! += 1
+        scoreLabel.text = "Score: \(score!)"
+    }
+    
+    func createPB(h: Int) -> SKPhysicsBody {
+        let pb = SKPhysicsBody(rectangleOf: CGSize(width: 50, height: h))
         pb.friction = 0
         pb.collisionBitMask = 1
         pb.categoryBitMask = 2
@@ -69,7 +80,7 @@ class GameScene: SKScene {
         pb.restitution = 0
         pb.linearDamping = 0
         pb.angularDamping = 0
-        pb.velocity = CGVector(dx: -75, dy: 0)
+        pb.velocity = CGVector(dx: -80, dy: 0)
         
         return pb
     }
@@ -78,13 +89,16 @@ class GameScene: SKScene {
     //Start and End Game
     func startGame() {
         started = true
+        score = 0
         bird.physicsBody?.affectedByGravity = true
-        obsTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(spawnObstacle), userInfo: nil, repeats: true)
+        obsTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(spawnObstacle), userInfo: nil, repeats: true)
+        scoreTimer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(updateScore), userInfo: nil, repeats: true)
     }
     
     func endGame() {
         started = false
         obsTimer.invalidate()
+        scoreTimer.invalidate()
         bird.physicsBody?.affectedByGravity = false
         bird.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
         bird.position = CGPoint(x: 0, y: 70)
