@@ -51,15 +51,29 @@ class GameScene: SKScene {
     @objc func spawnObstacle() {
         print("spawn")
         let bottom = SKSpriteNode()
-        bottom.position = CGPoint(x: 350, y: -540)
-        let height = arc4random_uniform(250) + 251
-        bottom.size = CGSize(width: 50, height: Int(height))
-        bottom.texture = SKTexture(imageNamed: "Pillar")
+        let top = SKSpriteNode()
         
-        let pb = createPB(h: Int(height))
+        bottom.position = CGPoint(x: 350, y: -540)
+        top.position = CGPoint(x: 350, y: 540)
+        
+        let height1 = arc4random_uniform(320) + 321
+        let height2 = 1280 - 125 - height1
+        
+        bottom.size = CGSize(width: 50, height: Int(height1))
+        top.size = CGSize(width: 50, height: Int(height2))
+        
+        bottom.texture = SKTexture(imageNamed: "Pillar")
+        top.texture = SKTexture(imageNamed: "Pillar")
+        
+        var pb = createPB(h: Int(height1))
         bottom.physicsBody = pb
         
+        pb = createPB(h: Int(height2))
+        top.physicsBody = pb
+        top.zRotation = CGFloat(Double.pi)
+        
         self.addChild(bottom)
+        self.addChild(top)
     }
     
     @objc func updateScore() {
@@ -91,7 +105,7 @@ class GameScene: SKScene {
         started = true
         score = 0
         bird.physicsBody?.affectedByGravity = true
-        obsTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(spawnObstacle), userInfo: nil, repeats: true)
+        obsTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(spawnObstacle), userInfo: nil, repeats: true)
         scoreTimer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(updateScore), userInfo: nil, repeats: true)
     }
     
