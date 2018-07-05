@@ -9,8 +9,9 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     var started:Bool!
+    var finished:Bool!
     var bird:SKSpriteNode!
     var scoreLabel:SKLabelNode!
     var height:CGFloat!
@@ -23,17 +24,19 @@ class GameScene: SKScene {
         scoreLabel = self.childNode(withName: "score") as! SKLabelNode
         
         started = false
+        finished = false
         score = 0
         
         let border = SKPhysicsBody(edgeLoopFrom: (view.scene?.frame)!)
         border.friction = 0
+        
         self.physicsBody = border
         
-        self.physicsWorld.contactDelegate = self as? SKPhysicsContactDelegate
+        self.physicsWorld.contactDelegate = self
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if !started {
+        if !started && !finished {
             startGame()
         }
         
@@ -72,6 +75,9 @@ class GameScene: SKScene {
         top.physicsBody = pb
         top.zRotation = CGFloat(Double.pi)
         
+        bottom.name = "obstacle"
+        top.name = "obstacle"
+        
         self.addChild(bottom)
         self.addChild(top)
     }
@@ -99,6 +105,15 @@ class GameScene: SKScene {
         return pb
     }
     
+    func didBegin(_ contact: SKPhysicsContact) {
+        let bodyAName = contact.bodyA.node?.name
+        let bodyBName = contact.bodyB.node?.name
+        
+        if (bodyAName == "obstacle" && bodyBName == "bird") || (bodyAName == "bird" && bodyBName == "obstacle") {
+            endGame()
+        }
+    }
+    
     
     //Start and End Game
     func startGame() {
@@ -106,11 +121,12 @@ class GameScene: SKScene {
         score = 0
         bird.physicsBody?.affectedByGravity = true
         obsTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(spawnObstacle), userInfo: nil, repeats: true)
-        scoreTimer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(updateScore), userInfo: nil, repeats: true)
+        scoreTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateScore), userInfo: nil, repeats: true)
     }
     
     func endGame() {
         started = false
+        finished = true
         obsTimer.invalidate()
         scoreTimer.invalidate()
         bird.physicsBody?.affectedByGravity = false
@@ -120,6 +136,12 @@ class GameScene: SKScene {
         let gameOverLabel = SKLabelNode(text: "Game Over!")
         gameOverLabel.position = CGPoint(x: 0, y: 0)
         
+        let finalScoreLabel = SKLabelNode(text: "Score: \(score!)")
+        finalScoreLabel.position = CGPoint(x: 0, y: -30)
+        
         self.addChild(gameOverLabel)
+        self.addChild(finalScoreLabel)
+        
+        self.physicsWorld.speed = 0
     }
 }
