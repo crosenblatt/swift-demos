@@ -19,7 +19,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var obsTimer = Timer()
     var scoreTimer = Timer()
     
+    var player:Player!
+    
     override func didMove(to view: SKView) {
+        if loadPlayer() != nil {
+            player = loadPlayer()
+        } else {
+            player = Player(highScore: 0)
+        }
+        
         bird = self.childNode(withName: "bird") as! SKSpriteNode
         scoreLabel = self.childNode(withName: "score") as! SKLabelNode
         
@@ -118,6 +126,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     //Start and End Game
     func startGame() {
         started = true
+        self.physicsWorld.speed = 1
         score = 0
         bird.physicsBody?.affectedByGravity = true
         obsTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(spawnObstacle), userInfo: nil, repeats: true)
@@ -135,6 +144,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let gameOverLabel = SKLabelNode(text: "Game Over!")
         gameOverLabel.position = CGPoint(x: 0, y: 0)
+        gameOverLabel.zPosition = 2
         
         let finalScoreLabel = SKLabelNode(text: "Score: \(score!)")
         finalScoreLabel.position = CGPoint(x: 0, y: -30)
@@ -143,5 +153,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(finalScoreLabel)
         
         self.physicsWorld.speed = 0
+        
+        player.highScore = score > player.highScore ? score : player.highScore
+        
+        let highScoreLabel = SKLabelNode(text: "High Score: \(player.highScore!)")
+        highScoreLabel.position = CGPoint(x: 0, y: -60)
+        
+        self.addChild(highScoreLabel)
+        
+        savePlayer()
+    }
+    
+    //MARK: Save and Load
+    private func savePlayer() {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(player, toFile: Player.ArchiveURL.path)
+        
+        if isSuccessfulSave {
+            print("saved")
+        } else {
+            print("save failed")
+        }
+    }
+    
+    private func loadPlayer() -> Player? {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: Player.ArchiveURL.path) as? Player
     }
 }

@@ -9,11 +9,15 @@
 import UIKit
 import SpriteKit
 import GameplayKit
+import os.log
 
 class GameViewController: UIViewController {
 
+    var player:Player!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
@@ -27,8 +31,8 @@ class GameViewController: UIViewController {
             
             view.ignoresSiblingOrder = true
             
-            view.showsFPS = true
-            view.showsNodeCount = true
+            view.showsFPS = false
+            view.showsNodeCount = false
         }
     }
 
@@ -51,5 +55,28 @@ class GameViewController: UIViewController {
 
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    
+}
+
+class Player: NSObject, NSCoding {
+    var highScore:Int!
+    
+    static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+    static let ArchiveURL = DocumentsDirectory.appendingPathComponent("player")
+    
+    init(highScore: Int) {
+        self.highScore = highScore
+    }
+    
+    //MARK: NSCoding
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(highScore, forKey: "highScore")
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        self.highScore = aDecoder.decodeObject(forKey: "highScore") as? Int
+        super.init()
     }
 }
