@@ -142,6 +142,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         bird.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
         bird.position = CGPoint(x: 0, y: 70)
         
+        /*
+        
         let gameOverLabel = SKLabelNode(text: "Game Over!")
         gameOverLabel.position = CGPoint(x: 0, y: 0)
         gameOverLabel.zPosition = 2
@@ -151,15 +153,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.addChild(gameOverLabel)
         self.addChild(finalScoreLabel)
+         
+         */
         
         self.physicsWorld.speed = 0
         
         player.highScore = score > player.highScore ? score : player.highScore
         
+        /*
+         
         let highScoreLabel = SKLabelNode(text: "High Score: \(player.highScore!)")
         highScoreLabel.position = CGPoint(x: 0, y: -60)
+ 
         
         self.addChild(highScoreLabel)
+ 
+        */
+        let alert = UIAlertController(title: "Game Over!", message: "Score: \(score!) HighScore: \(player.highScore!)", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        if let vc = self.scene?.view?.window?.rootViewController {
+            vc.present(alert, animated: true, completion: nil)
+        }
         
         savePlayer()
     }
