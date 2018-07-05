@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D38BBA120EEA60D00E42224 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D38BBA020EEA60D00E42224 /* SplashViewController.swift */; };
 		7D854CBA20EA9B5000417A3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D854CB920EA9B5000417A3D /* AppDelegate.swift */; };
 		7D854CBC20EA9B5000417A3D /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7D854CBB20EA9B5000417A3D /* GameScene.sks */; };
 		7D854CBE20EA9B5000417A3D /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7D854CBD20EA9B5000417A3D /* Actions.sks */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7D38BBA020EEA60D00E42224 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		7D854CB620EA9B4F00417A3D /* FlappyBird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlappyBird.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D854CB920EA9B5000417A3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7D854CBB20EA9B5000417A3D /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				7D854CB920EA9B5000417A3D /* AppDelegate.swift */,
 				7D854CBB20EA9B5000417A3D /* GameScene.sks */,
 				7D854CBD20EA9B5000417A3D /* Actions.sks */,
+				7D38BBA020EEA60D00E42224 /* SplashViewController.swift */,
 				7D854CBF20EA9B5000417A3D /* GameScene.swift */,
 				7D854CC120EA9B5000417A3D /* GameViewController.swift */,
 				7D854CC320EA9B5000417A3D /* Main.storyboard */,
@@ -149,6 +152,7 @@
 				7D854CC020EA9B5000417A3D /* GameScene.swift in Sources */,
 				7D854CC220EA9B5000417A3D /* GameViewController.swift in Sources */,
 				7D854CBA20EA9B5000417A3D /* AppDelegate.swift in Sources */,
+				7D38BBA120EEA60D00E42224 /* SplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
