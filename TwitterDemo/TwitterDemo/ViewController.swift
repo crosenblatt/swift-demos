@@ -1,0 +1,45 @@
+//
+//  ViewController.swift
+//  TwitterDemo
+//
+//  Created by Christopher Rosenblatt on 7/11/18.
+//  Copyright © 2018 crosenblatt. All rights reserved.
+//
+
+import UIKit
+import TwitterKit
+
+class ViewController: UIViewController {
+
+    @IBOutlet weak var profilePic: UIImageView!
+    @IBOutlet weak var unameLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    var loginButton : TWTRLogInButton!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        
+        loginButton = TWTRLogInButton {(session, error) in
+            if let asession = session {
+                let client = TWTRAPIClient()
+                client.loadUser(withID: asession.userID, completion: { (user, error) in
+                    self.nameLabel.text = user?.name
+                    self.unameLabel.text = asession.userName
+                    
+                    let imgURL = user?.profileImageURL
+                    let url = URL(string: imgURL!)
+                    
+                })
+            }
+        }
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+
+}
+
