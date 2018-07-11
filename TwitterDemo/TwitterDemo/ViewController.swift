@@ -8,6 +8,7 @@
 
 import UIKit
 import TwitterKit
+import Social
 
 class ViewController: UIViewController {
 
@@ -47,6 +48,12 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    @IBAction func sendTweet(_ sender: Any) {
+        if TWTRTwitter.sharedInstance().sessionStore.hasLoggedInUsers() {
+            let composer = TWTRComposerViewController.init(initialText: "Hello Twitter!", image: nil, videoURL: nil)
+            self.present(composer, animated: true, completion: nil)
+        }
+    }
+    
 }
 
