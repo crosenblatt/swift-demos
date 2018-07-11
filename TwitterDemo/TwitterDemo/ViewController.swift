@@ -29,10 +29,17 @@ class ViewController: UIViewController {
                     
                     let imgURL = user?.profileImageURL
                     let url = URL(string: imgURL!)
-                    
+                    let data = try?Data(contentsOf: url!)
+                    self.profilePic.image = UIImage(data: data!)
                 })
+            } else {
+                print("login error")
             }
+            
         }
+        
+        loginButton.center = self.view.center
+        self.view.addSubview(loginButton)
     }
 
     override func didReceiveMemoryWarning() {
